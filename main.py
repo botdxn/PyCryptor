@@ -20,12 +20,9 @@ KEY = "5VPo7JrbIFzQDMDdsBfx8bPhQwALxTmepzOawL6CLJY="
 
 def main():
     #encryptDir(filesToEncrypt)
-    #decryptDir(filesToDecrypt)
-    #encryptModule.encryptFile(KEY, file)
-    for file in filesToDecrypt:
-        encryptModule.decryptFile(KEY, file)
+    decryptDir(filesToDecrypt)
 
-def encryptDir(files):
+def encryptDir(filesToEncrypt):
     for file in filesToEncrypt:
         encryptModule.encryptFile(KEY, dir + '/mass/' + file)
 

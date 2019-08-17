@@ -20,6 +20,8 @@ def encryptFile(key, file):
             print(f"File {file} encrypted. Original file deleted.")
         else:
             print(f"File {file} encrypted.")
+        
+        print(f"Key used to encrypt: {key}")
     
 def decryptFile(key, file):
     print('Trying to open decrypted file.')

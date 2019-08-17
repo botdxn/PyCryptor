@@ -21,18 +21,13 @@ def encryptFile(key, file):
         else:
             print(f"File {file} encrypted.")
         
-        print(f"Key used to encrypt: {key}")
+        print(f"Key used to encrypt: {repr(key)}")
     
 def decryptFile(key, file):
-    print('Trying to open decrypted file.')
     with open(file, 'rb') as fileDecrypt:
         fileData = fileDecrypt.read()
-    print('Decrypted file opened.')
-    
     fernet = Fernet(key)
-    print('Trying to decrypt file.')
     decrypted = fernet.decrypt(fileData)
-    print('Token valid.')
     
     with open(file, 'wb') as decryptFile:
         decryptFile.write(decrypted)

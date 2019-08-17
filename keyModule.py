@@ -9,6 +9,9 @@ def createkey():
     print("Encrypt key file created.")
 
 def openkey():
-    file = open('key.key', 'r')
-    key = file.read()
-    return key
+    try:
+        file = open('key.key', 'r')
+        key = file.read()
+        return key
+    except ValueError:
+        print('Key file not found.')

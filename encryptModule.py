@@ -2,26 +2,27 @@ from cryptography.fernet import Fernet
 import keyModule
 
 
-def encryptFile(key):
-    with open('Test.txt', 'rb') as file:
-        fileData = file.read()
+def encryptFile(key, file):
+    with open('Test.txt', 'rb') as encryptfile:
+        encryptfileData = encryptfile.read()
         
     fernet = Fernet(key)
-    encrypted = fernet.encrypt(fileData)
+    encrypted = fernet.encrypt(encryptfileData)
 
-    with open('Test.txt.encrypted', 'wb') as encryptFile:
-        encryptFile.write(encrypted)
+    with open('Test.txt.encrypted', 'wb') as encryptfile:
+        encryptfile.write(encrypted)
+        encryptfile.close()
         
     print("File encrypted.")
     
-def decryptFile(key):
-    with open('Test.txt.encrypted', 'rb') as file:
-        fileData = file.read()
+def decryptFile(key, file):
+    with open(file + '.encrypted', 'rb') as fileDecrypt:
+        fileData = fileDecrypt.read()
         
     fernet = Fernet(key)
-    encrypted = fernet.decrypt(fileData)
+    decrypted = fernet.decrypt(fileData)
 
-    with open('Test.txt.decrypted', 'wb') as encryptFile:
-        encryptFile.write(encrypted)
+    with open('Test.txt.decrypted', 'wb') as decryptFile:
+        decryptFile.write(decrypted)
         
     print("File decrypted.")

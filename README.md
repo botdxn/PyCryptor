@@ -17,3 +17,10 @@ I didn't yet clean the script up but the modules and functions are as follows:
 # keyModule.py
 - createkey() - creates a key file with fernet
 - openkey() - reads a key file
+
+# Roadmap
+- add terminal user interface to call the functions, specify files, keys, directories
+- add argv support to execute from cmd with parameters
+- create more secure encryption rather than relying on Fernet
+- add stealth mode
+- add threading support

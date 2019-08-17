@@ -1,19 +1,37 @@
-import keyModule, encryptModule, os
+import keyModule, encryptModule, os, json, glob
 
-file = ('Test.txt')
+dir = os.getcwd()
+filesToEncrypt = os.listdir('mass')
+filesToDecrypt = glob.glob(dir + '\mass\*.encrypted')
 
-if os.path.isfile('./key.key') == True:
-    KEY = keyModule.openkey()
-    print('Key file found.')
-else:
-    print('Key file not found. Creating new key.')
-    keyModule.createkey()
-    KEY = keyModule.openkey()
+
+#creating json config file
+config = {
+    "REMOVE_ENCRYPTED": "True",
+    "REMOVE_DECRYPTED": "True"
+}
+with open('config.json', 'w') as configFile:
+    json.dump(config, configFile)
+    configFile.close()
+
+#checking if key file is present, else creating a key file
+KEY = "5VPo7JrbIFzQDMDdsBfx8bPhQwALxTmepzOawL6CLJY="
     
 
 def main():
-    encryptModule.encryptFile(KEY, file)
-    encryptModule.decryptFile(KEY, file)
+    #encryptDir(filesToEncrypt)
+    #decryptDir(filesToDecrypt)
+    #encryptModule.encryptFile(KEY, file)
+    for file in filesToDecrypt:
+        encryptModule.decryptFile(KEY, file)
+
+def encryptDir(files):
+    for file in filesToEncrypt:
+        encryptModule.encryptFile(KEY, dir + '/mass/' + file)
+
+def decryptDir(filesToDecrypt):
+    for file in filesToDecrypt:
+        encryptModule.decryptFile(KEY, file)
 
 def debugClean():
     os.remove('key.key')
@@ -25,4 +43,4 @@ def debugClean():
     
 if __name__ == '__main__':
     main()
-    debugClean()
+    #debugClean()

@@ -6,7 +6,7 @@ def createkey():
     file = open('key.key', 'wb')
     file.write(key)
     file.close()
-    print("Encrypt key file created")
+    print("Encrypt key file created.")
 
 def openkey():
     file = open('key.key', 'r')
